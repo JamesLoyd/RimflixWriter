@@ -9,9 +9,8 @@ public class ModConfig
     public IEnumerable<string> SupportedVersions { get; set; }
     public string Description { get; set; }
     public string SourceImagesFolderPath { get; set; }
-    public string ShowDefNames { get; set; }
+    public IEnumerable<string> ShowDefNames { get; set; }
     public string SecondsBetweenFrames { get; set; }
-    public string Label { get; set; }
 }
 
 public class AppConfig

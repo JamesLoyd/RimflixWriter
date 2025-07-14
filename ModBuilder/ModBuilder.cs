@@ -12,6 +12,7 @@ public static class ModBuilder
         }
 
         var homePath = appConfig.ModReleaseTargets + "/" + config.PackageId;
+        Directory.Delete(homePath, true);
         Directory.CreateDirectory(homePath);
         BuildAbout(homePath, config);
         BuildDefs(homePath, config);
@@ -51,34 +52,39 @@ public static class ModBuilder
     private static void BuildDefs(string path, ModConfig config)
     {
         Directory.CreateDirectory(path + "/Defs/ShowDefs");
-        foreach (var defName in config.ScreenOptions)
+        foreach (var screenOptions in config.ScreenOptions)
         {
-            var defs = new Defs
+            var screen = ScreenTypeHelper.GetScreenType(screenOptions);
+            foreach (var showDef in config.ShowDefNames)
             {
-                RimFlixShowDef = new RimFlixShowDef
+                var defName = $"{showDef}_{screen}screen";
+                var defs = new Defs
                 {
-                    DefName = config.ShowDefNames,
-                    Label = config.Label,
-                    Description = "A RimFlix show",
-                    TelevisionDefs = new TelevisionDefs
+                    RimFlixShowDef = new RimFlixShowDef
                     {
-                        Li = "FlatscreenTelevision"
-                    },
-                    SecondsBetweenFrames = double.Parse(config.SecondsBetweenFrames),
-                    Sound = null, // Placeholder for sound, can be set later
-                    Frames = new Frames
-                    {
-                        Li = BuildImageDefs.BuildImageSources(config).ToList()
+                        DefName = defName,
+                        Label = showDef,
+                        Description = "A RimFlix show",
+                        TelevisionDefs = new TelevisionDefs
+                        {
+                            Li = "FlatscreenTelevision"
+                        },
+                        SecondsBetweenFrames = double.Parse(config.SecondsBetweenFrames),
+                        Sound = null, // Placeholder for sound, can be set later
+                        Frames = new Frames
+                        {
+                            Li = BuildImageDefs.BuildImageSources(config).ToList()
+                        }
                     }
+                };
+                var xmlserializer = new System.Xml.Serialization.XmlSerializer(typeof(Defs));
+                var filePath = Path.Combine(path, "Defs", "ShowDefs", $"{defName}.xml");
+                using (var writer = new StreamWriter(filePath))
+                {
+                    xmlserializer.Serialize(writer, defs);
                 }
-            };
-            
-            // var xmlserializer = new System.Xml.Serialization.XmlSerializer(typeof(Defs));
-            // var filePath = Path.Combine(path, "Defs", "ShowDefs", $"{defName}.xml");
-            // using (var writer = new StreamWriter(filePath))
-            // {
-            //     xmlserializer.Serialize(writer, defs);
-            // }
+            }
+
         }
     }
 

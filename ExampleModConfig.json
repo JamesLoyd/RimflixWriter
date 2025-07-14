@@ -9,6 +9,6 @@
   ],
   "description": "A mod that adds a hockey-themed screen to Rimflix.",
   "sourceImagesFolderPath": "/paths/to/your/images",
-  "showDefNames": "Hockey",
+  "showDefNames": ["Hockey"],
   "secondsBetweenFrames": 1
 }

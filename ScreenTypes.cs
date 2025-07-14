@@ -2,7 +2,7 @@
 
 public enum ScreenTypes
 {
-    Flatscreen,
+    Flat,
     Mega,
     Tube
 }
@@ -15,7 +15,7 @@ public static class ScreenTypeHelper
         {
             case "flatscreen":
             case "flat":
-                return ScreenTypes.Flatscreen;
+                return ScreenTypes.Flat;
             case "mega":
                 return ScreenTypes.Mega;
             case "tube":
