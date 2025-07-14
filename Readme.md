@@ -1,4 +1,24 @@
-﻿You will need to crate a config file called config.toml
+﻿
+## About
+
+This is a simple tool that will generate rimflix mods for you.
+I do not plan to release binaries, but if you want me to do so, please let me know.
+Otherwise, it should be as simple as installing dotnet 6.0 and running the program.
+Make sure the config.toml file is set up next to the executable.
+
+## Building
+Make sure dotnet 6.0 is installed on your system. You can download it from [here](https://dotnet.microsoft.com/download/dotnet/6.0).
+And then just cd into the root of the repository and then just do:
+```
+dotnet run
+```
+
+#### Note
+The first run may take some time, but subsequent runs should be faster.
+However, the more shows you are generating, the longer it will take.
+
+## Running the Mod Generator
+You will need to crate a config file called config.toml
 
 ```
 mod_build_targets = "/path/to/mods"
