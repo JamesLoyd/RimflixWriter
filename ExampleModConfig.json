@@ -1,0 +1,14 @@
+﻿{
+  "screenOptions": ["flat", "mega", "tube"],
+  "modName": "Rimflix - Hockey Flix",
+  "author": "ExampleModAuthor",
+  "packageId": "CommanderJroc.RimFlixHockey",
+  "supportedVersions": [
+    "1.5",
+    "1.6"
+  ],
+  "description": "A mod that adds a hockey-themed screen to Rimflix.",
+  "sourceImagesFolderPath": "/paths/to/your/images",
+  "showDefNames": "Hockey",
+  "secondsBetweenFrames": 1
+}
