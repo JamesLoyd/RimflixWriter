@@ -11,7 +11,7 @@ public static class BuildImageDefs
 
         return imageFiles.Select(file => new ImageSource
         {
-            TexPath = file.Split("/Textures/")[1],
+            TexPath = file.Split("/Textures/")[1].Replace(".png", "").Replace(".jpg", ""),
             GraphicClass = "Graphic_Single"
         });
     }
