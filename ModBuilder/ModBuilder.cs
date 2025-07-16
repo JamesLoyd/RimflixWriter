@@ -55,6 +55,7 @@ public static class ModBuilder
 
     private static void BuildDefs(string path, ModConfig config)
     {
+        Console.WriteLine("Known screen options: " + string.Join(", ", config.ScreenOptions));
         Directory.CreateDirectory(path + "/Defs/ShowDefs");
         foreach (var screenOptions in config.ScreenOptions)
         {
@@ -88,7 +89,6 @@ public static class ModBuilder
                     xmlserializer.Serialize(writer, defs);
                 }
             }
-
         }
     }
 
@@ -98,7 +98,7 @@ public static class ModBuilder
         {
             var showPath = "" + path + "/Textures/Shows/" + VARIABLE;
             Directory.CreateDirectory(showPath);
-            ResizeImageHelper.Build(path, config, showPath);
+            ResizeImageHelper.Build(VARIABLE,config, showPath);
         }
     }
  }

@@ -16,7 +16,7 @@ public static class ResizeImageHelper
             var count = 0;
             foreach (var image in images)
             {
-                BuildImageForScreen("Hockey", screenOption, image, showPath, count);
+                BuildImageForScreen(path, screenOption, image, showPath, count);
                 count++;
             }
         }
@@ -48,11 +48,11 @@ public static class ResizeImageHelper
         }
         else if (types == ScreenTypes.Mega)
         {
-            ResizeImage(image, 451, 128, $"{def}_MegaScreen.png");
+            ResizeImage(image, 451, 128, $"{outputPath}/{def}_{pictureCount}_megascreen.png");
         }
         else if (types == ScreenTypes.Tube)
         {
-            ResizeImage(image, 157, 128, $"{def}_TubeScreen.png");
+            ResizeImage(image, 157, 128, $"{outputPath}/{def}_{pictureCount}_tube.png");
         }
     }
 }
