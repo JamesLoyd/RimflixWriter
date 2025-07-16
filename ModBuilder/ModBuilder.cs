@@ -91,5 +91,6 @@ public static class ModBuilder
     private static void BuildTextures(string path, ModConfig config)
     {
         Directory.CreateDirectory("" + path + "/Textures/Shows/" + config.ShowDefNames);
+        ResizeImageHelper.Build(path, config);
     }
  }
