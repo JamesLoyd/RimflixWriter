@@ -24,10 +24,12 @@ public static class ResizeImageHelper
 
     public static void ResizeImage(string inputPath, int width, int height, string outputPath)
     {
+        Console.WriteLine(inputPath);
         using var input = File.OpenRead(inputPath);
-        using var original = SKBitmap.Decode(input);
-
-        using var resized = original.Resize(new SKImageInfo(width, height), SKSamplingOptions.Default);
+        Console.WriteLine(input.Length);
+        using var original = SKBitmap.Decode(inputPath);
+        Console.WriteLine(original != null ? "Image loaded successfully." : "Failed to load image.");
+        using var resized = original?.Resize(new SKImageInfo(width, height), SKSamplingOptions.Default);
         if (resized == null)
             throw new Exception("Failed to resize image.");
 
@@ -42,14 +44,14 @@ public static class ResizeImageHelper
         {
             ResizeImage(image, 310, 128, $"{def}_FlatScreen.png");
         }
-        else if (types == ScreenTypes.Mega)
-        {
-            ResizeImage(image, 1920, 1080, $"{def}_MegaScreen.png");
-        }
-        else if (types == ScreenTypes.Tube)
-        {
-            ResizeImage(image, 1280, 720, $"{def}_TubeScreen.png");
-        }
+        // else if (types == ScreenTypes.Mega)
+        // {
+        //     ResizeImage(image, 1920, 1080, $"{def}_MegaScreen.png");
+        // }
+        // else if (types == ScreenTypes.Tube)
+        // {
+        //     ResizeImage(image, 1280, 720, $"{def}_TubeScreen.png");
+        // }
     }
     
     

@@ -9,6 +9,7 @@
     <ItemGroup>
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
       <PackageReference Include="SkiaSharp" Version="3.119.0" />
+      <PackageReference Include="SkiaSharp.NativeAssets.Linux" Version="3.119.0" />
       <PackageReference Include="Tomlyn" Version="0.19.0" />
     </ItemGroup>
 
