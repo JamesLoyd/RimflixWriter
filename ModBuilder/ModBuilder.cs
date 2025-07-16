@@ -71,7 +71,7 @@ public static class ModBuilder
                         Description = "A RimFlix show",
                         TelevisionDefs = new TelevisionDefs
                         {
-                            Li = "FlatscreenTelevision"
+                            Li = ScreenTypeHelper.GetScreenVersion(screen)
                         },
                         SecondsBetweenFrames = double.Parse(config.SecondsBetweenFrames),
                         Sound = null, // Placeholder for sound, can be set later

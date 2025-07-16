@@ -21,7 +21,19 @@ public static class ScreenTypeHelper
             case "tube":
                 return ScreenTypes.Tube;
         }
-        
+
         throw new ApplicationException("Invalid screen type: " + type);
+    }
+
+    public static string GetScreenVersion(ScreenTypes screenTypes)
+    {
+        switch (screenTypes)
+        {
+            case ScreenTypes.Flat:
+                return "FlatscreenTelevision";
+            case ScreenTypes.Mega:
+                return "MegascreenTelevision";
+        }
+        return "TubeTelevision";
     }
 }
