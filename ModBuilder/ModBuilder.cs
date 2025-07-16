@@ -12,7 +12,11 @@ public static class ModBuilder
         }
 
         var homePath = appConfig.ModReleaseTargets + "/" + config.PackageId;
-        Directory.Delete(homePath, true);
+        if (Directory.Exists(homePath))
+        {
+            Directory.Delete(homePath, true);
+        }
+
         Directory.CreateDirectory(homePath);
         BuildAbout(homePath, config);
         BuildTextures(homePath, config);
