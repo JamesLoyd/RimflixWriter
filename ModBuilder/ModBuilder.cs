@@ -15,8 +15,8 @@ public static class ModBuilder
         Directory.Delete(homePath, true);
         Directory.CreateDirectory(homePath);
         BuildAbout(homePath, config);
-        BuildDefs(homePath, config);
         BuildTextures(homePath, config);
+        BuildDefs(homePath, config);
     }
 
     private static bool CheckForImages(string path)
@@ -73,7 +73,7 @@ public static class ModBuilder
                         Sound = null, // Placeholder for sound, can be set later
                         Frames = new Frames
                         {
-                            Li = BuildImageDefs.BuildImageSources(config).ToList()
+                            Li = BuildImageDefs.BuildImageSources(config, path, showDef).ToList()
                         }
                     }
                 };
@@ -90,7 +90,11 @@ public static class ModBuilder
 
     private static void BuildTextures(string path, ModConfig config)
     {
-        Directory.CreateDirectory("" + path + "/Textures/Shows/" + config.ShowDefNames);
-        ResizeImageHelper.Build(path, config);
+        foreach (var VARIABLE in config.ShowDefNames)
+        {
+            var showPath = "" + path + "/Textures/Shows/" + VARIABLE;
+            Directory.CreateDirectory(showPath);
+            ResizeImageHelper.Build(path, config, showPath);
+        }
     }
  }

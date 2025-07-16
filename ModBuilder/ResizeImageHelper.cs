@@ -1,5 +1,4 @@
-﻿
-using System.Drawing;
+﻿using System.Drawing;
 using System.Net.Mime;
 using SkiaSharp;
 
@@ -7,16 +6,18 @@ namespace RimflixShowMaker.ModBuilder;
 
 public static class ResizeImageHelper
 {
-    public static void Build(string path, ModConfig config)
+    public static void Build(string path, ModConfig config, string showPath)
     {
         var imageDirectory = Path.Combine(config.SourceImagesFolderPath);
         var images = Directory.GetFiles(imageDirectory);
         foreach (var configScreenOption in config.ScreenOptions)
         {
             var screenOption = ScreenTypeHelper.GetScreenType(configScreenOption);
+            var count = 0;
             foreach (var image in images)
             {
-                BuildImageForScreen("Hockey", screenOption, image);
+                BuildImageForScreen("Hockey", screenOption, image, showPath, count);
+                count++;
             }
         }
     }
@@ -37,23 +38,21 @@ public static class ResizeImageHelper
         using var output = File.OpenWrite(outputPath);
         image.Encode(SKEncodedImageFormat.Png, 100).SaveTo(output);
     }
-    
-    public static void BuildImageForScreen(string def, ScreenTypes types, string image)
+
+    public static void BuildImageForScreen(string def, ScreenTypes types, string image, string outputPath,
+        int pictureCount = 0)
     {
         if (types == ScreenTypes.Flat)
         {
-            ResizeImage(image, 310, 128, $"{def}_FlatScreen.png");
+            ResizeImage(image, 310, 128, $"{outputPath}/{def}_{pictureCount}_FlatScreen.png");
         }
-        // else if (types == ScreenTypes.Mega)
-        // {
-        //     ResizeImage(image, 1920, 1080, $"{def}_MegaScreen.png");
-        // }
-        // else if (types == ScreenTypes.Tube)
-        // {
-        //     ResizeImage(image, 1280, 720, $"{def}_TubeScreen.png");
-        // }
+        else if (types == ScreenTypes.Mega)
+        {
+            ResizeImage(image, 451, 128, $"{def}_MegaScreen.png");
+        }
+        else if (types == ScreenTypes.Tube)
+        {
+            ResizeImage(image, 157, 128, $"{def}_TubeScreen.png");
+        }
     }
-    
-    
 }
-

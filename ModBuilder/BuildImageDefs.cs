@@ -2,19 +2,16 @@
 
 public static class BuildImageDefs
 {
-    public static IEnumerable<ImageSource> BuildImageSources(ModConfig config)
+    public static IEnumerable<ImageSource> BuildImageSources(ModConfig config, string path, string VARIABLE)
     {
-        if (string.IsNullOrEmpty(config.SourceImagesFolderPath) || !Directory.Exists(config.SourceImagesFolderPath))
-        {
-            throw new DirectoryNotFoundException($"Source images folder not found: {config.SourceImagesFolderPath}");
-        }
+            var showPath = "" + path + "/Textures/Shows/" + VARIABLE;
 
-        var imageFiles = Directory.EnumerateFiles(config.SourceImagesFolderPath, "*.*", SearchOption.AllDirectories)
+        var imageFiles = Directory.EnumerateFiles(showPath, "*.*", SearchOption.AllDirectories)
             .Where(file => file.EndsWith(".png", StringComparison.OrdinalIgnoreCase) || file.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase));
 
         return imageFiles.Select(file => new ImageSource
         {
-            TexPath = file,
+            TexPath = file.Split("/Textures/")[1],
             GraphicClass = "Graphic_Single"
         });
     }
