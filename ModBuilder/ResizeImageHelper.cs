@@ -25,11 +25,10 @@ public static class ResizeImageHelper
 
     public static void ResizeImage(string inputPath, int width, int height, string outputPath)
     {
-        Console.WriteLine(inputPath);
+        ConsoleWriter.Write($"Handling image: {inputPath}");
         using var input = File.OpenRead(inputPath);
-        Console.WriteLine(input.Length);
         using var original = SKBitmap.Decode(inputPath);
-        Console.WriteLine(original != null ? "Image loaded successfully." : "Failed to load image.");
+        ConsoleWriter.Write(original != null ? "Image loaded successfully." : "Failed to load image.");
         using var resized = original?.Resize(new SKImageInfo(width, height), SKSamplingOptions.Default);
         if (resized == null)
             throw new Exception("Failed to resize image.");
