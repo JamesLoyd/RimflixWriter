@@ -6,8 +6,12 @@ I do not plan to release binaries, but if you want me to do so, please let me kn
 Otherwise, it should be as simple as installing dotnet 6.0 and running the program.
 Make sure the config.toml file is set up next to the executable.
 
+## Configuring the Mod Generator
+The config value for `mod_build_targets` should house each mod's json config file and a folder for all of the images you want to use for that mod.
+The config value for `mod_release_targets` should be the folder where you want the generated mods to be placed. (It will clear this folder before generating the mods.)
+
 ## Building
-Make sure dotnet 6.0 is installed on your system. You can download it from [here](https://dotnet.microsoft.com/download/dotnet/6.0).
+Make sure dotnet 8.0 is installed on your system. You can download it from [here](https://dotnet.microsoft.com/download/dotnet/8.0).
 And then just cd into the root of the repository and then just do:
 ```
 dotnet run
@@ -25,7 +29,7 @@ mod_build_targets = "/path/to/mods"
 mod_release_targets = "/path/to/mods"
 ```
 
-For each mod you wish to make, you will need to add an ExampleModConfig.json file in the folder. 
+For each mod you wish to make, you will need to add an ExampleModConfig.json file in the folder. (You can name this whatever you want, but it must be a valid JSON)
 Then all you need to do is create the pictures folder you listed. This must have a unique name, so the program can generate the mod correctly.
 
 ```json
