@@ -37,7 +37,7 @@ Then all you need to do is create the pictures folder you listed. This must have
   "screenOptions": ["flat", "mega", "tube"],
   "modName": "Rimflix - Hockey Flix",
   "author": "ExampleModAuthor",
-  "packageId": "CommanderJroc.RimFlixHockey",
+  "packageId": "SomeExampleModId",
   "supportedVersions": [
     "1.5",
     "1.6"
