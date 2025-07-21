@@ -28,7 +28,7 @@ public static class ResizeImageHelper
         ConsoleWriter.Write($"Handling image: {inputPath}");
         using var input = File.OpenRead(inputPath);
         using var original = SKBitmap.Decode(inputPath);
-        ConsoleWriter.Write(original != null ? "Image loaded successfully." : "Failed to load image.");
+        ConsoleWriter.Write(original != null ? "Image loaded successfully to be resized." : "Failed to load image.", original != null ? ConsoleMessageType.Information : ConsoleMessageType.Error);
         using var resized = original?.Resize(new SKImageInfo(width, height), SKSamplingOptions.Default);
         if (resized == null)
             throw new Exception("Failed to resize image.");
