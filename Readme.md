@@ -48,3 +48,7 @@ Then all you need to do is create the pictures folder you listed. This must have
 ```
 
 And then all you need to do is run the program. It will generate the mod(s) in the mod_release_targets folder.
+
+## Bugs? Help?
+
+If you find any bugs, please open an issue. If you need help, please open an issue as well. I will do my best to help you out, if I have the time.
