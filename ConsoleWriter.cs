@@ -7,9 +7,22 @@ public static class ConsoleWriter
 {
     //TODO: This will be replaced with a proper logging framework in the future.
     // I just copied it over from existing code cause, it was simple and effective.
-    public static void WriteInformation(string message)
+    public static void WriteInformation(string message, ConsoleMessageType messageType = ConsoleMessageType.Information)
     {
-        var infoLabel = "SYSTEM".Pastel(Color.Chartreuse);
+        var color = messageType switch
+        {
+            ConsoleMessageType.Warning => Color.Yellow,
+            ConsoleMessageType.Error => Color.Red,
+            _ => Color.Chartreuse
+        };
+        var infoLabel = $"{messageType}".Pastel(color);
         Console.WriteLine($"[{infoLabel}] {message}");
     }
+}
+
+public enum ConsoleMessageType
+{
+    Information,
+    Warning,
+    Error
 }
