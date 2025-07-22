@@ -1,4 +1,4 @@
-﻿
+  ![GitHub License](https://img.shields.io/github/license/JamesLoyd/RimflixWriter)﻿
 ## About
 
 This is a simple tool that will generate rimflix mods for you.
