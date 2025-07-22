@@ -7,7 +7,7 @@ public static class ModBuilder
         // check for images in the source folder
         if (!CheckForImages(config.SourceImagesFolderPath))
         {
-            Console.WriteLine("No images found in the source folder. Please add images to the folder: " + config.SourceImagesFolderPath);
+            ConsoleWriter.Write("No images found in the source folder. Please add images to the folder: " + config.SourceImagesFolderPath, ConsoleMessageType.Error);
             return;
         }
 
@@ -55,7 +55,7 @@ public static class ModBuilder
 
     private static void BuildDefs(string path, ModConfig config)
     {
-        Console.WriteLine("Known screen options: " + string.Join(", ", config.ScreenOptions));
+        ConsoleWriter.Write("Known screen options: " + string.Join(", ", config.ScreenOptions));
         Directory.CreateDirectory(path + "/Defs/ShowDefs");
         foreach (var screenOptions in config.ScreenOptions)
         {

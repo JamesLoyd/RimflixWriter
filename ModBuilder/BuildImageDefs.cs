@@ -4,10 +4,12 @@ public static class BuildImageDefs
 {
     public static IEnumerable<ImageSource> BuildImageSources(ModConfig config, string path, string VARIABLE)
     {
-            var showPath = "" + path + "/Textures/Shows/" + VARIABLE;
+        ConsoleWriter.Write("Now building textures for " + VARIABLE);
+        var showPath = "" + path + "/Textures/Shows/" + VARIABLE;
 
         var imageFiles = Directory.EnumerateFiles(showPath, "*.*", SearchOption.AllDirectories)
-            .Where(file => file.EndsWith(".png", StringComparison.OrdinalIgnoreCase) || file.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase));
+            .Where(file => file.EndsWith(".png", StringComparison.OrdinalIgnoreCase) ||
+                           file.EndsWith(".jpg", StringComparison.OrdinalIgnoreCase));
 
         return imageFiles.Select(file => new ImageSource
         {
