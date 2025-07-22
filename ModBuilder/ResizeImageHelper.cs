@@ -44,15 +44,15 @@ public static class ResizeImageHelper
     {
         if (types == ScreenTypes.Flat)
         {
-            ResizeImage(image, 310, 128, $"{outputPath}/{def}_{pictureCount}_FlatScreen.png");
+            ResizeImage(image, 310, 128, $"{outputPath}/{def.Replace(" ", "").Replace(",", "")}_{pictureCount}_FlatScreen.png");
         }
         else if (types == ScreenTypes.Mega)
         {
-            ResizeImage(image, 451, 128, $"{outputPath}/{def}_{pictureCount}_megascreen.png");
+            ResizeImage(image, 451, 128, $"{outputPath}/{def.Replace(" ", "").Replace(",", "")}_{pictureCount}_megascreen.png");
         }
         else if (types == ScreenTypes.Tube)
         {
-            ResizeImage(image, 157, 128, $"{outputPath}/{def}_{pictureCount}_tube.png");
+            ResizeImage(image, 157, 128, $"{outputPath}/{def.Replace(" ", "").Replace(",", "")}_{pictureCount}_tube.png");
         }
     }
 }
