@@ -62,7 +62,7 @@ public static class ModBuilder
             var screen = ScreenTypeHelper.GetScreenType(screenOptions);
             foreach (var showDef in config.ShowDefNames)
             {
-                var defName = $"{showDef}_{screen}screen";
+                var defName = $"{showDef}_{screen}screen".Replace(" ", "").Replace(",", "");
                 var defs = new Defs
                 {
                     RimFlixShowDef = new RimFlixShowDef
